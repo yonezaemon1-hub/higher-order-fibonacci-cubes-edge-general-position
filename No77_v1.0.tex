@@ -1,0 +1,271 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  11pt,
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{Exact edge general position numbers of higher-order Fibonacci
+cubes}\label{exact-edge-general-position-numbers-of-higher-order-fibonacci-cubes}
+
+Ryutaro Yonezu\\
+Independent Researcher\\
+Version 1.0 --- 2026-11-19
+
+\textbf{Preprint. NOT HUMAN PEER REVIEWED.} Independent AI mathematics
+audit: \textbf{THEOREM CONDITIONAL PASS / UNIQUENESS CONDITIONAL PASS}.
+NOVELTY INCONCLUSIVE / REFERENCES PARTIAL. All rights reserved.
+
+This is an analytic proof. Finite computation provides corroboration
+only. The theorem and complete classification of maximum sets below
+reproduce the frozen v0.1 mathematical manuscript without changes. The
+conditional AI audit status is based on an author-provided transcription
+of an independent AI response. An independent verbatim comparison with
+the source chat was not performed; the auditor's independent checking
+code was not obtained.
+
+\subsection{Model and theorem}\label{model-and-theorem}
+
+For integers k\textgreater=3 and n\textgreater=2 let G=Q\_n(1\^{}k) be
+the subgraph of the binary n-cube induced by the words without k
+consecutive ones. Write A\_n=A\_n\^{}(k) for their number, A\_0=1. An
+edge general position set S has no three distinct edges on a common
+shortest path. Denote its maximum cardinality by gp\_e(G). Let Theta\_i
+be the edges flipping coordinate i.
+
+\textbf{Theorem.} For all k\textgreater=3 and n\textgreater=2,
+gp\_e(G)=2(A\_n-A\_(n-1)). If n\textgreater=k+1 the unique maximum set
+is Theta\_1 union Theta\_n. If 2\textless=n\textless=k, precisely the
+unions of two distinct coordinate classes are maximum sets.
+
+No statement for k=2 is assumed: the proof is independent of No.75 and
+No.76.
+
+\subsection{1. Isometry and coordinate
+counts}\label{1-isometry-and-coordinate-counts}
+
+The legal-word family is downward closed in the coordinatewise order.
+Between any legal x,y, go from x down to x AND y, then up to y, flipping
+each differing bit once. Every intermediate word is legal, hence graph
+distance equals Hamming distance. In particular a geodesic never repeats
+a coordinate; a union of two coordinate classes is in edge general
+position.
+
+Every legal word with bit i=1 corresponds bijectively to its downward
+edge in Theta\_i. The words with bit i=0 split independently into two
+legal words, so
+
+\textbar Theta\_i\textbar{} = A\_n - A\_(i-1) A\_(n-i).
+
+Concatenation embeds the legal words of length n-1 into the pairs of
+legal words of lengths i-1,n-i. Consequently A\_(i-1)
+A\_(n-i)\textgreater=A\_(n-1). For i=1,n equality holds, and
+B=2(A\_n-A\_(n-1)) is a lower bound for gp\_e(G).
+
+If n\textgreater=k+1 and 1\textless i\textless n, choose positive
+integers a\textless=i-1,b\textless=n-i with a,b\textless=k-1 and a+b=k.
+Such integers exist since both lengths are positive and their sum is
+n-1\textgreater=k. A legal left word ending in a ones and a legal right
+word starting in b ones (all other bits zero) have illegal
+concatenation. Thus the inequality is strict for every interior i. When
+n\textless=k, A\_(n-1)=2\^{}(n-1) and both factors are powers of two, so
+all coordinate classes have equal size.
+
+\subsection{2. Two-arm projection
+lemma}\label{2-two-arm-projection-lemma}
+
+In any isometric induced subgraph of a hypercube, suppose a selected
+star at c contains edges in distinct coordinates i,j. A selected edge e
+in a coordinate l different from i,j cannot have projection on i,j equal
+to either of the two leaves c\^{}i or c\^{}j (superscript means flip
+that coordinate).
+
+Proof: choose that leaf z, and the endpoint w of e with w\_l=z\_l. By
+hypothesis z and w agree on i,j,l, so any shortest path joining z and w
+flips none of these coordinates. Concatenate the other leaf
+-\textgreater{} c -\textgreater{} z, a shortest z-w path, and e. All
+coordinate flips occur at most once, and because graph distances are
+Hamming distances this is a geodesic containing three selected edges.
+Contradiction.
+
+\subsection{3. Star forest lemma}\label{3-star-forest-lemma}
+
+If S uses at least three distinct coordinates, the graph whose edges are
+S is a star forest (ignore isolated vertices).
+
+Proof: if a connected component contains a simple three-edge path, its
+directions must repeat (otherwise the path is a geodesic). As
+consecutive directions cannot repeat in a simple path, the pattern is
+i,j,i. The two consecutive two-arm stars have respective leaf
+projections covering all four binary patterns on i,j (the four vertices
+form three sides of an ambient square). A selected edge in a third
+coordinate is therefore forbidden by Section 2. This contradicts the
+hypothesis. Hence there is no simple path of length three. The graph is
+bipartite. Any connected bipartite graph with no simple three-edge path
+is a star: a cycle would contain such a path, and a tree of diameter at
+most two is a star.
+
+In particular, with largest star degree d,
+\textbar S\textbar\textless=d/(d+1) A\_n.
+
+\subsection{4. Uniform density of the two end
+classes}\label{4-uniform-density-of-the-two-end-classes}
+
+For n\textless k, A\_n=2\^{}n and B=A\_n. For n=k, A\_n=2\^{}k-1 and
+B=2\^{}k-2. For n\textgreater=k+1, counting legal words of length n-1
+extended by one bit gives A\_n=2 A\_(n-1)-A\_(n-k-1): the forbidden
+extensions of otherwise legal words are exactly the words ending in 0
+followed by k ones, with an arbitrary legal prefix of length n-k-1.
+Hence B=A\_n-A\_(n-k-1).
+
+Claim: B\textgreater=10 A\_n/11 for all n\textgreater=4,
+k\textgreater=3, with strict inequality for n\textgreater=10.
+
+For k\textgreater=4 and n\textgreater=k+1, from each legal prefix of
+length n-k-1 append a zero and any legal word of length k. This gives
+A\_n \textgreater= (2\^{}k-1) A\_(n-k-1) \textgreater=15 A\_(n-k-1). The
+cases n\textless=k are immediate from the explicit counts
+(n=k\textgreater=4). For k=3, A\_n satisfies
+A\_n=A\_(n-1)+A\_(n-2)+A\_(n-3) for n\textgreater=3. The inequality
+A\_n\textgreater=11 A\_(n-4) at n=4,5,6 follows from
+A\_4=13,A\_5=24,A\_6=44 and A\_0=1,A\_1=2,A\_2=4. The difference
+satisfies the same recurrence from n=7 onward, hence is strictly
+positive for every n\textgreater=7. This proves the claim.
+
+\subsection{5. Large stars exclude a fixed fraction of
+vertices}\label{5-large-stars-exclude-a-fixed-fraction-of-vertices}
+
+Suppose d\textgreater=11. Among the d coordinates of a largest star at
+c, choose six pairwise nonconsecutive coordinates: sorting the d
+coordinates and selecting alternating ones gives at least
+ceil(d/2)\textgreater=6. Split the chosen coordinates into two triples.
+
+Let X be a uniformly random legal vertex. Conditional on any specified
+values of some other chosen coordinates (with nonempty conditioning
+event), for any still-unfixed chosen coordinate i we have
+
+1/5 \textless= Pr(X\_i=1 \textbar{} condition) \textless= 1/2.
+
+Indeed, deleting a one at i is an injection from the conditioned words
+with X\_i=1 into those with X\_i=0. Conversely, set bit i to one and
+clear both immediate neighbors (only existing neighbors at boundaries).
+This creates an isolated one, preserves legality for k\textgreater=2,
+and preserves the conditioning since no chosen coordinate is adjacent to
+i. This map from the zero class into the one class has at most four
+preimages per image (the former neighboring bits). Thus \#ones
+\textless= \#zeros \textless=4 \#ones. Both classes are nonempty. It
+follows that the disagreement indicator Y\_i=1\_\{X\_i != c\_i\} has
+conditional probabilities for either value at least 1/5 and at most 4/5.
+
+In either triple, conditional on the first disagreement indicator and
+any earlier specified chosen bits, the probability that both remaining
+indicators equal the first is at most (4/5)\^{}2. Thus the probability
+that the triple is mixed (contains both zero and one) is at least 9/25.
+Conditioning on every possible full assignment of the first triple, the
+same bound holds for the second. Therefore the probability that both
+triples are mixed is at least (9/25)\^{}2=81/625.
+
+For any vertex x in this event, its projection on the d star coordinates
+has at least two agreements and at least two disagreements with c. For
+any incident selected edge in direction l, remove l if it is a star
+coordinate. At least one agreeing and one disagreeing star coordinate
+remain; call them i,j. The edge has the projected pattern of one of the
+two leaves c\^{}i,c\^{}j on this pair. Section 2 forbids that edge.
+Hence none of these vertices is incident to S.
+
+At least 81/625 of the vertices are excluded. As S is a star forest, its
+number of edges is at most its number of incident vertices. In
+particular \textbar S\textbar{} \textless= 544 A\_n/625 \textless{} 10
+A\_n/11 \textless= B (n\textgreater=11).
+
+\subsection{6. Completion and equality}\label{6-completion-and-equality}
+
+If S uses at most two coordinates, Section 1 bounds its size by B;
+equality requires two complete largest coordinate classes. If S uses at
+least three, it is a star forest. When d\textgreater=11 Section 5 gives
+a strict bound below B. When d\textless=10,
+\textbar S\textbar\textless=d A\_n/(d+1)\textless=10 A\_n/11. For
+n\textgreater=4 the bound is strict below B: if n\textless=9 then
+d\textless=n\textless=9 and the degree ratio is strictly below 10/11; if
+n\textgreater=10 Section 4 gives B\textgreater10 A\_n/11. For n=3,
+d\textless=3 and B is 6 for k=3, 8 for k\textgreater3; 3 A\_n/4
+\textless{} B in both cases. For n=2 at least three coordinates are
+impossible. These cases exhaust all sets. The equality classification
+follows from Section 1. QED.
+
+\subsection{Reproduction and
+limitations}\label{reproduction-and-limitations}
+
+The proof is analytic and does not depend on finite computational cases.
+verify.py uses only the Python standard library (Python 3.10+) and
+independently enumerates legal words, conditional counts, projection
+events, and small forbidden-triple optimization problems. These checks
+corroborate the proof; none substitutes for an independent review of its
+universal arguments.
+
+\subsection{Prior work (preliminary)}\label{prior-work-preliminary}
+
+S. Klavzar and E. Tan, Edge General Position Sets in Fibonacci and Lucas
+Cubes, Bull. Malays. Math. Sci. Soc. 46 (2023), 120, DOI
+10.1007/s40840-023-01517-y. Known context for edge general position in
+partial cubes and ordinary Fibonacci and Lucas cubes. Two-coordinate
+lower bound is a standard partial-cube observation, not claimed new.
+
+The size of k-th order generalized Fibonacci cubes, arXiv:2601.17273
+(2026). Relevant counting context. Direct formula overlap not located in
+preliminary title/abstract search; full-text review pending. No priority
+claim.
+
+\end{document}
